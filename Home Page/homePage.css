@@ -1,0 +1,65 @@
+.background-image {
+    /* The image used */
+    background-image: url("homePagePic.png");
+
+    /* Full height */
+    height: 100vh;
+    width: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Create a dark overlay */
+    position: relative;
+  }
+
+
+
+
+.background-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  }
+  .title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: 000000;
+    text-align: center;
+    z-index: 2; /* Above the overlay */
+  }
+  .title {
+    font-size: 4em;
+    font-weight:  bold;
+  }
+  .suit {
+    font-size: 1em;
+    color: 1F1F1F;
+  }
+  .start-button {
+    background-color: #723032; 
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 700px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, #723032, #E39C9E);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* This makes the text color transparent, showing the background */
+    display: inline; /* Necessary to apply the gradient to just this span of text */
+  }
