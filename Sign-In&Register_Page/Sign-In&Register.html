@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="Sign-In&Register.css">
-    <link rel="icon" type="x-icon" href="diamond-solid.svg">
+    <link rel="icon" type="x-icon" href="/diamond-solid.svg">
+    <script defer src="script.js"></script>
     <title>Rabbe3na</title>
 </head>
 
@@ -22,31 +23,33 @@
           <span class="arrow-down"></span>
         </button>
         <div class="dropdown-content">
-          <a href="Sign-In & Register.html">Log in</a>
+          <a href="Sign-In&Register.html">Log in</a>
         </div>
     </div>
   </header>
     <div class="container" id="container">
+      
         <div class="form-container sign-up">
-            <form>
+            <form id="sign-up-form" method="get">
                 <h1>Create Account</h1>
                 
                 
-                <input type="username" placeholder="Username">
+                <input id="username" type="username" placeholder="Username" required >
             
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Confirm Password">
+                <input id="email" type="email" placeholder="Email" required >
+                <input id="password" type="password" placeholder="Password">
+                <div id="error"></div>
+                <input id="confirm-password" type="password" placeholder="Confirm Password">
 
-                <button>Sign Up</button>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form id="sign-in-form">
                 <h1>Sign In</h1>
                 
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input id="emailLogIn" type="email" placeholder="Email">
+                <input id="passwordLogIn" type="password" placeholder="Password">
                 
                 <a href="#">Forget Your Password?</a>
                 <button>Sign In</button>
@@ -95,7 +98,7 @@
         </div>
       </footer>
 
-    <script src="script.js"></script>
+    
 </body>
 
 </html>

@@ -200,3 +200,14 @@
 .container.active .sign-up button {
     background-color: #723032;
 }
+
+#error{
+    color: #ff0033;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    margin-top: 70px;
+    
+    
+    
+}
