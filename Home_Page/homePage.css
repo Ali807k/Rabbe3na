@@ -54,6 +54,12 @@
     margin-top: 20px;
     cursor: pointer;
     width: 700px;
+    
+  }
+
+  .start-button:hover {
+    
+    box-shadow: 3px 3px 3px 3px #000000;
   }
 
   .gradient-text {

@@ -45,6 +45,10 @@ body{
     font-weight: bold;
   }
 
+  .navbar-title a:hover{
+    text-shadow: 0 0 5px #000;
+  }
+
   
 
   .dropbtn {
