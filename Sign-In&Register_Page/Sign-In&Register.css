@@ -211,3 +211,20 @@
     
     
 }
+
+#sign-in-form a:hover{
+    text-shadow: 0 0 5px #000;
+
+}
+
+#sign-in-form button:hover{
+    box-shadow: 0 0 10px #000;
+}
+
+#sign-up-form button:hover{
+    box-shadow: 0 0 10px #000;
+}
+
+.toggle-container button:hover{
+    box-shadow: 0 0 10px #000;
+}

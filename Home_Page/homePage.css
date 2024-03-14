@@ -19,12 +19,15 @@
 
 
 .background-image::after {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none; /* This makes sure that the overlay is not clickable */
+    
+    
     background: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   }
   .title-container {
