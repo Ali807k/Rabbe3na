@@ -228,3 +228,7 @@
 .toggle-container button:hover{
     box-shadow: 0 0 10px #000;
 }
+
+.container input:focus{
+    box-shadow: 0 0 10px #000;
+}
