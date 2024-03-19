@@ -1,6 +1,6 @@
 .background-image {
     /* The image used */
-    background-image: url("homePagePic.png");
+    background-image: url("images/800_1680db2d58.jpeg");
 
     /* Full height */
     height: 100vh;
@@ -13,6 +13,7 @@
 
     /* Create a dark overlay */
     position: relative;
+    transition: background-image 0.5s ease-in-out;
   }
 
 
@@ -42,6 +43,7 @@
   .title {
     font-size: 4em;
     font-weight:  bold;
+    color: #000000;
   }
   .suit {
     font-size: 1em;
