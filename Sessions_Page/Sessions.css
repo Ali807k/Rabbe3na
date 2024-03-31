@@ -57,15 +57,17 @@
 
   
   .create-btn {
-    background-color: #723032; /* Replace with the exact color from the image */
-    color: white;
+    background-color: #723032; 
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     margin-top: 20vw;
     width: 100%;
     text-transform: uppercase;
     position: relative;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
     
   }
 
