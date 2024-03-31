@@ -42,3 +42,45 @@
     transition: 0.2s;
 }
 
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 20%;
+    margin-right: 20px;
+    width: 300px; 
+    height: 60%;
+    background: #FFF6E5; 
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  .create-btn {
+    background-color: #723032; /* Replace with the exact color from the image */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20vw;
+    width: 100%;
+    text-transform: uppercase;
+    position: relative;
+    
+  }
+
+  .create-btn:hover {
+    box-shadow: 0 0 30px #000;
+    
+  }
+
+  .sidebar p{
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .sidebar h1{
+    
+    text-decoration: solid;
+    
+  }
