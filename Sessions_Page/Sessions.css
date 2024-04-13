@@ -86,3 +86,94 @@
     text-decoration: solid;
     
   }
+
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #FFF;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    min-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Form Sections */
+  .form-section {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .form-section label {
+    font-weight: bold;
+  }
+  
+  .form-section p {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .access-button {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .access-button.public {
+    background-color: #84C686; 
+  }
+  
+  .create-button {
+    width: 100%;
+    background-color: #84C686; 
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-button:hover {
+    background-color: #76b07c; 
+  }
+  
+  /* Textarea Styling */
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+  }
