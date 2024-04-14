@@ -149,6 +149,10 @@
     margin-left: 10px;
     cursor: pointer;
   }
+
+  .access-button.active {
+    background-color: #84C686;
+  }
   
   
   
@@ -174,4 +178,50 @@
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical;
+  }
+
+
+
+  .jalsah {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .jalsah-header .jalsah-name {
+    font-weight: bold;
+  }
+  
+  .jalsah-info {
+    text-align: right;
+  }
+  
+  .join-btn {
+    background-color: #84C686;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .join-btn:hover {
+    background-color: #76b07c; 
+  }
+
+  .jalsah-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This will create a grid with a flexible number of columns depending on the container's width */
+    grid-gap: 20px; /* This is the space between the grid items */
+    padding: 20px;
+    justify-content: center; /* This will center the grid items in the container when they don't fill up the entire width */
+    align-items: start; /* Aligns items to the start of the grid area */
+    max-width: 1200px; /* Maximum width of the grid */
+    margin-bottom: 50rem; 
+    margin-right: 10rem;
   }
