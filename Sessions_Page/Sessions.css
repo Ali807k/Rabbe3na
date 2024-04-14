@@ -150,9 +150,7 @@
     cursor: pointer;
   }
   
-  .access-button.public {
-    background-color: #84C686; 
-  }
+  
   
   .create-button {
     width: 100%;

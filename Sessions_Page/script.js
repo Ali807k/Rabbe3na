@@ -23,3 +23,17 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+var publicButton = document.getElementsByClassName("access-button public")[0];
+var privateButton = document.getElementsByClassName("access-button private")[0];
+
+publicButton.onclick = function() {
+  publicButton.style.backgroundColor = "#84C686";
+  privateButton.style.backgroundColor = "#ddd";
+}
+
+privateButton.onclick = function() {
+  privateButton.style.backgroundColor = "#84C686";
+  publicButton.style.backgroundColor = "#ddd";
+}
+
