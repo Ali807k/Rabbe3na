@@ -67,13 +67,17 @@
         <span class="close">&times;</span>
         <h2>Create a New Jalsah</h2>
         <div class="form-section">
+          <label for="gameTitle">Game Title:</label>
+          <input type="text" id="title" name="gameTitle" required>
+        </div>
+        <div class="form-section">
           <label for="gameAccess">Game Access:</label>
           <button class="access-button public">Public</button>
           <button class="access-button private">Private</button>
         </div>
         <div class="form-section">
           <label for="time">Time:</label>
-          <input type="time" id="time" name="time" required>
+          <input type="datetime-local" id="time" name="time" required>
         </div>
         <div class="form-section">
           <label for="location">Location:</label>
@@ -87,6 +91,11 @@
         <button id="createButton" class="create-button">Create</button>
       </div>
     </div>
+
+
+    <div id="jalsahList" class="jalsah-list-container">
+      <!-- New jalsah elements will be appended here -->
+  </div>
     
 
 
