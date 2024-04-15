@@ -1,0 +1,76 @@
+.main-container {	
+	position: relative;
+	top: 60px;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	padding: 0 20px;
+    max-width: 1400px;
+}
+
+.title {
+	font-size: 4em;
+  	font-weight: bold;
+	color: #1F1F1F
+}
+
+.spade {
+  	display: inline-block;
+	position: relative;
+	top: -20px;
+	left: 15px;
+  	font-size: 1.3em;
+  	rotate: -15deg;
+}
+
+.club {
+  	display: inline-block;
+  	position: relative;
+	top: 20px;
+	left: -15px;
+  	font-size: 1.3em;
+  	rotate: 15deg;
+}
+
+.image-container {
+	overflow: hidden;
+	width: 60%;
+	filter: blur(4px) contrast(1.5);
+}
+
+.background-image {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.start-button {
+	position: relative;
+	top: -60px;
+	background-color: #723032; 
+	width: 100%;
+	font-weight: bold;
+	color: white;
+	padding: 15px 30px;
+	font-size: 1.5em;
+	border: none;
+	border-radius: 5px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.start-button:hover {	
+	box-shadow: 0px 0px 32px #723032;
+	transition: 0.5s;
+}
+
+.gradient-text {
+	background: linear-gradient(to right, #723032, #E39C9E);
+	text-shadow: 0 0 32px #E39C9E;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent; /* This makes the text color transparent, showing the background */
+	display: inline; /* Necessary to apply the gradient to just this span of text */
+}
