@@ -2,7 +2,10 @@
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
     width: 768px;
     max-width: 100%;
@@ -207,28 +210,31 @@
     position: absolute;
     top: 0;
     margin-top: 70px;
-    
-    
-    
 }
 
+/* HOVER EFFECTS */
 #sign-in-form a:hover{
-    text-shadow: 0 0 5px #000;
-
+    text-shadow: 0 0 2px #000;
+    transition: 0.5s;
 }
 
 #sign-in-form button:hover{
-    box-shadow: 0 0 10px #000;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 #sign-up-form button:hover{
-    box-shadow: 0 0 10px #000;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 .toggle-container button:hover{
-    box-shadow: 0 0 10px #000;
+    background-color: white;
+    transition: 0.5s;
+    color:#000;
 }
 
 .container input:focus{
-    box-shadow: 0 0 10px #000;
+    border: 1px solid #333;
+    transition: 0.5s;
 }

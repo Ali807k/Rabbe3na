@@ -6,51 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="Sign-In&Register.css">
+    <link rel="stylesheet" href="access.css">
     <link rel="icon" type="x-icon" href="/diamond-solid.svg">
     <script defer src="script.js"></script>
     <title>Rabbe3na</title>
 </head>
 
 <body>
-  <header>
-    <div class="navbar">
-      <div class="navbar-title"><a href="/Home_Page/index.html">Rabbe3na</a></div>
-      <div class="dropdown">
-        <button class="dropbtn">
-          <span class="user-icon">👤</span>
-          Guest
-          <span class="arrow-down"></span>
-        </button>
-        <div class="dropdown-content">
-          <a href="Sign-In&Register.html">Log in</a>
-        </div>
-    </div>
-  </header>
+  	<header>
+		<div class="navbar">
+			<div class="navbar-title"><a href="/Home_Page/index.html">Rabbe3na</a></div>
+				<div class="dropdown">
+					<button class="dropbtn">
+						<span class="user-icon">👤</span>
+						Guest
+						<span class="arrow-down"></span>
+					</button>
+				<div class="dropdown-content">
+			<a href="access.html">Log in</a>
+			</div>
+		</div>
+  	</header>
     <div class="container" id="container">
-      
         <div class="form-container sign-up">
             <form id="sign-up-form" method="get">
                 <h1>Create Account</h1>
-                
-                
-                <input id="username" type="username" placeholder="Username" required >
-            
+                <input id="username" type="username" placeholder="Username" required>
                 <input id="email" type="email" placeholder="Email" required >
                 <input id="password" type="password" placeholder="Password">
                 <div id="error"></div>
                 <input id="confirm-password" type="password" placeholder="Confirm Password">
-
                 <button type="submit">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form id="sign-in-form">
                 <h1>Sign In</h1>
-                
                 <input id="emailLogIn" type="email" placeholder="Email" required>
                 <input id="passwordLogIn" type="password" placeholder="Password" required>
-                
                 <a href="/Forgot-Password_Page/forgotPassword.html">Forget Your Password?</a>
                 <button type="submit">Sign In</button>
             </form>
@@ -72,15 +65,8 @@
             </div>
         </div>
     </div>
-
     <footer>
-        
-        <div class="footer-bottom">
-          <p>&copy; Rabbe3na. All Rights Reserved. | Designed by Group 8 	&#10024; </p>
-        </div>
-      </footer>
-
-    
+		&copy; Rabbe3na. All Rights Reserved. | Designed by Group 8 	&#10024;
+    </footer>
 </body>
-
 </html>
