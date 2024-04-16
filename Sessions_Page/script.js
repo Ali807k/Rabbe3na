@@ -6,6 +6,7 @@ var btn = document.getElementById("createJalsahButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+updateJalsahListDisplay();
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -52,6 +53,7 @@ document.getElementById("createButton").addEventListener("click", function() {
   };
 
   addJalsahToSessionList(jalsahData);
+  updateJalsahListDisplay();
 });
 
 function addJalsahToSessionList(jalsahData) {
@@ -69,4 +71,20 @@ function addJalsahToSessionList(jalsahData) {
     <button class="join-btn">Join</button>
   `;
   document.getElementById("jalsahList").appendChild(jalsahElement);
+}
+
+function updateJalsahListDisplay() {
+  var jalsahList = document.getElementById("jalsahList");
+
+  if (jalsahList.children.length === 0) {
+    
+    
+    jalsahList.innerHTML = "<h1>No sessions available</h1>";
+    
+  } else {
+    var h1Element = jalsahList.querySelector("h1");
+    if (h1Element) {
+      h1Element.remove();
+    }
+  }
 }
