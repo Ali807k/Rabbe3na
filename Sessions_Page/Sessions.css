@@ -1,13 +1,70 @@
-.search-container {
+.main-container {
+    position: relative;
+    top: 60px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+.main-jalsaat-container {
+    grid-row: 1 / 4;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.jalsah-container {
+    border-radius: 15px;
+    background-color: #FFF6E5;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-container {
+    display: flex;
     align-items: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+.jalsah-desc {
+    padding: 10px 0;
+    font-size: larger;
+    align-self: flex-end;
+}
+
+.jalsah-info-container {
+    display: flex;
+    gap: 10px;
+}
+
+.jalsah-info-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.jalsah-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 3px;
+}
+
+.search-container {
     background-color: #BBB5A8;
     padding: 10px;
     border-radius: 25px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30rem;
-    width: 40%;
+    display: flex;
+    justify-content: start;
 }
 
 .search-input {
@@ -32,6 +89,49 @@
     font-size: 16px;
 }
 
+.jalsah-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This will create a grid with a flexible number of columns depending on the container's width */
+    grid-gap: 20px; /* This is the space between the grid items */
+    padding: 20px;
+    justify-content: center; /* This will center the grid items in the container when they don't fill up the entire width */
+    align-items: start; /* Aligns items to the start of the grid area */
+}
+
+.sidebar {
+    grid-row: 1 / 4;
+    grid-column: 2 / 3;
+    background: #FFF6E5; 
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar p{
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.sidebar h1{
+    text-decoration: solid;
+}
+
+.create-btn {
+    align-self: flex-start;
+    grid-row: 4 / 5;
+    grid-column: 2 / 3;
+    background-color: #723032; 
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
 .search-container:hover {
     box-shadow: 0 0 5px  #000000;
     transition: 0.2s;
@@ -42,67 +142,28 @@
     transition: 0.2s;
 }
 
-.sidebar {
-    position: fixed;
-    right: 0;
-    top: 20%;
-    margin-right: 20px;
-    width: 300px; 
-    height: 60%;
-    background: #FFF6E5; 
-    padding: 20px;
-    border-radius: 30px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  
-  .create-btn {
-    background-color: #723032; 
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    margin-top: 20vw;
-    width: 100%;
-    text-transform: uppercase;
-    position: relative;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    
-  }
-
-  .create-btn:hover {
+.create-btn:hover {
     box-shadow: 0 0 30px #000;
-    
-  }
+}
 
-  .sidebar p{
-    font-size: 16px;
-    margin-top: 20px;
-  }
-
-  .sidebar h1{
-    
-    text-decoration: solid;
-    
-  }
-
-
-  .modal {
+.modal {
     display: none;
     position: fixed;
     z-index: 2;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
-  }
+}
   
-  /* Modal Content */
-  .modal-content {
-    position: relative;
+/* Modal Content */
+.modal-content {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #FFF;
     margin: 10% auto;
     padding: 20px;
@@ -110,53 +171,52 @@
     width: 30%;
     min-width: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  /* Close Button */
-  .close {
+/* Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+}
   
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
   
-  /* Form Sections */
-  .form-section {
-    margin: 10px 0;
+/* Form Sections */
+.form-section {
+    margin: 10px 0px;
     font-size: 16px;
-  }
+}
   
-  .form-section label {
+.form-section label {
     font-weight: bold;
-  }
+}
   
-  .form-section p {
+.form-section p {
     display: inline-block;
     margin-left: 10px;
-  }
+}
   
-  .access-button {
+.access-button {
     background-color: #ddd;
     border: none;
     padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
-  }
+}
 
-  .access-button.active {
+.access-button.active {
     background-color: #84C686;
-  }
+}
   
-  
-  
-  .create-button {
+
+.create-button {
     width: 100%;
     background-color: #84C686; 
     color: white;
@@ -164,64 +224,18 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
   
-  .create-button:hover {
+.create-button:hover {
     background-color: #76b07c; 
-  }
+}
   
-  /* Textarea Styling */
-  textarea {
+/* Textarea Styling */
+textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical;
-  }
-
-
-
-  .jalsah {
-    background: #FFFFFF;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .jalsah-header .jalsah-name {
-    font-weight: bold;
-  }
-  
-  .jalsah-info {
-    text-align: right;
-  }
-  
-  .join-btn {
-    background-color: #84C686;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .join-btn:hover {
-    background-color: #76b07c; 
-  }
-
-  .jalsah-list-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* This will create a grid with a flexible number of columns depending on the container's width */
-    grid-gap: 20px; /* This is the space between the grid items */
-    padding: 20px;
-    justify-content: center; /* This will center the grid items in the container when they don't fill up the entire width */
-    align-items: start; /* Aligns items to the start of the grid area */
-    max-width: 1200px; /* Maximum width of the grid */
-    margin-bottom: 50rem; 
-    margin-right: 10rem;
-  }
+}

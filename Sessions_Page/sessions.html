@@ -6,136 +6,76 @@
     <link rel="icon" type="x-icon" href="/diamond-solid.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="sessions.css">
-    
-
+    <link rel="stylesheet" href="Sessions.css">
     <title>Sessions</title>
 </head>
 <body>
-    
-
     <header>
         <div class="navbar">
           <div class="navbar-title"><a href="/Home_Page/index.html">Rabbe3na</a></div>
           <div class="dropdown">
             <button class="dropbtn">
-              <span class="user-icon">👤</span>
-              Guest
-              <span class="arrow-down"></span>    
+              	<span class="user-icon">👤</span>
+              	Guest
+              	<span class="arrow-down"></span>    
             </button>
             <div class="dropdown-content">
-              <a href="/Sign-In&Register_Page/access.html">Log in</a>
+              	<a href="/Sign-In&Register_Page/access.html">Log in</a>
             </div>
         </div>
-      </header>
-
-      <div class="search-container">
-        <input type="search" id="search" class="search-input" placeholder="Enter the serial number of the Jalsaah...">
-        <button type="submit" id="search-button" class="search-button">
-            <i class="fas fa-search"></i>
-        </button>
+    </header>
+	<div class="main-container">
+		<div class="main-jalsaat-container">
+			<div class="search-container">
+				<input type="search" id="search" class="search-input" placeholder="Enter the serial number of the Jalsaah...">
+				<button type="submit" id="search-button" class="search-button">
+					<i class="fas fa-search"></i>
+				</button>
+			</div>
+			<div id="jalsahList" class="jalsah-list-container">
+				<!-- New jalsah elements will be appended here -->
+			</div>	
+		</div>
+		<div class="sidebar">
+			<h1>Jalsati:</h1>
+			<p>You have no current Jalsah.</p>
+		</div>		
+		<button class="create-btn" id="createJalsahButton">Create A New Jalsah</button>
+	</div>
+	<div id="myModal" class="modal">
+      	<div class="modal-content">
+        	<span class="close">&times;</span>
+        	<h2>Create a New Jalsah</h2>
+        	<div class="form-section">
+          		<label for="gameTitle">Game Title:</label>
+          		<input type="text" id="title" name="gameTitle" required>
+        	</div>
+        	<div class="form-section">
+          		<label for="gameAccess">Game Access:</label>
+				<button class="access-button public">Public</button>
+				<button class="access-button private">Private</button>
+        	</div>
+			<div class="form-section">
+				<label for="time">Time:</label>
+				<input type="datetime-local" id="time" name="time" required>
+			</div>
+			<div class="form-section">
+				<label for="location">Location:</label>
+				<input id="locationInput" type="text" placeholder="Enter a location">
+			<div id="map" style="height: 400px; width: 100%;"></div>
+			</div>
+				<div class="form-section">
+				<label for="description">Description:</label>
+				<textarea id="description"></textarea>
+			</div>
+			<button id="createButton" class="create-button">Create</button>
+      	</div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="sidebar">
-      <h1>Jalsati:</h1>
-      <p>You have no current Jalsah.</p>
-      <button class="create-btn" id="createJalsahButton">Create A New Jalsah</button>
-    </div>
-
-
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Create a New Jalsah</h2>
-        <div class="form-section">
-          <label for="gameTitle">Game Title:</label>
-          <input type="text" id="title" name="gameTitle" required>
-        </div>
-        <div class="form-section">
-          <label for="gameAccess">Game Access:</label>
-          <button class="access-button public">Public</button>
-          <button class="access-button private">Private</button>
-        </div>
-        <div class="form-section">
-          <label for="time">Time:</label>
-          <input type="datetime-local" id="time" name="time" required>
-        </div>
-        <div class="form-section">
-          <label for="location">Location:</label>
-          <input id="locationInput" type="text" placeholder="Enter a location">
-          <div id="map" style="height: 400px; width: 100%;"></div>
-        </div>
-        <div class="form-section">
-          <label for="description">Description:</label>
-          <textarea id="description"></textarea>
-        </div>
-        <button id="createButton" class="create-button">Create</button>
-      </div>
-    </div>
-
-
-    <div id="jalsahList" class="jalsah-list-container">
-      <!-- New jalsah elements will be appended here -->
-  </div>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <footer>
-        
-        <div class="footer-bottom">
-          <p>&copy; Rabbe3na. All Rights Reserved. | Designed by Group 8 	&#10024; </p>
-        </div>
-      </footer>
-
-
-
-
-      <script src="script.js"></script>
-      <script src="google-maps.js"></script>
-      <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places">
-</script>
+    <footer>
+        &copy; Rabbe3na. All Rights Reserved. | Designed by Group 8 &#10024;
+    </footer>
+    <script src="script.js"></script>
+    <script src="google-maps.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=places"></script>
 </body>
-
 </html>
