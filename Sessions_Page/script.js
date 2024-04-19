@@ -42,22 +42,32 @@ privateButton.onclick = function() {
   gameAccess = 'private';
 }
 
-document.getElementById("createButton").addEventListener("click", function() {
-  console.log("Create button clicked");
-  const titleValue = document.getElementById("title") ? document.getElementById("title").value : "Default Title";
-  const jalsahData = {
-    name: titleValue,
-    gameAccess: gameAccess,
-    time: document.getElementById("time").value,
-    description: document.getElementById("description").value,
-    location: document.getElementById("locationInput").value,
-  };
+document.getElementById("createButton").addEventListener("click", function(event) {
+  event.preventDefault(); // Stop the form from submitting normally
 
   
+  
+  const timeValue = document.getElementById("time") ? document.getElementById("time").value.trim() : '';
+  const descriptionValue = document.getElementById("description") ? document.getElementById("description").value.trim() : '';
+
+  
+  if ( timeValue === '' || descriptionValue === '') {
+      alert('Please fill in all required fields.');
+      return; // Stop the function if any field is empty
+  }
+
+  const jalsahData = {
+      
+      gameAccess: document.getElementsByClassName("access-button public")[0].classList.contains("active") ? "public" : "private",
+      time: timeValue,
+      description: descriptionValue
+  };
 
   addJalsahToSessionList(jalsahData);
-  updateJalsahListDisplay();
+  updateJalsahListDisplay(); // Update the display
+  modal.style.display="none" // Hide the modal after adding the Jalsah
 });
+
 
 function addJalsahToSessionList(jalsahData) {
   const jalsahElement = document.createElement("div");
