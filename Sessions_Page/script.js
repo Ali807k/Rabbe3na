@@ -73,7 +73,7 @@ function addJalsahToSessionList(jalsahData) {
     <span class="username-jalsah">Guest</span>
   </div>
   <span class="jalsah-desc">
-    لا تشدها
+  ${jalsahData.description}
   </span>
   <div class="jalsah-info-container">
     <div class="jalsah-info-icons">
@@ -101,7 +101,7 @@ function addJalsahToSessionList(jalsahData) {
     </div>
     <div class="jalsah-info">
       <span class="jalsah-location">1.3 KM</span>
-      <span class="jalsah-time">11:30PM</span>
+      <span class="jalsah-time">${jalsahData.time}</span>
     </div>
   </div>
 </div>
