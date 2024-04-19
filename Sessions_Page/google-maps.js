@@ -1,8 +1,8 @@
 function initMap() {
-  // The location of an initial position
-  const initialPos = { lat: 22.7554, lng: 46.2092 };
+  // The location of an initial position 
+  const initialPos = { lat: 24.7135517, lng: 46.6752957 };
   const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6,
+      zoom: 8,
       center: initialPos,
   });
 

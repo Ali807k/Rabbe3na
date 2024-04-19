@@ -53,6 +53,11 @@ document.getElementById("createButton").addEventListener("click", function() {
     location: document.getElementById("locationInput").value,
   };
 
+  if (!jalsahData.time || !jalsahData.description || !jalsahData.location) {
+    alert("Please fill out all fields");
+    return;
+  }
+
   addJalsahToSessionList(jalsahData);
   updateJalsahListDisplay();
 });
