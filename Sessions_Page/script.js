@@ -49,7 +49,8 @@ document.getElementById("createButton").addEventListener("click", function() {
     name: titleValue,
     gameAccess: gameAccess,
     time: document.getElementById("time").value,
-    description: document.getElementById("description").value
+    description: document.getElementById("description").value,
+    location: document.getElementById("locationInput").value,
   };
 
   addJalsahToSessionList(jalsahData);
