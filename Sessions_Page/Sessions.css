@@ -8,6 +8,12 @@
     max-width: 1400px;
     margin-top: 10px;
     padding: 0 20px;
+    
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 
 .main-jalsaat-container {
@@ -23,6 +29,7 @@
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 }
 
 .user-container {
@@ -30,17 +37,20 @@
     align-items: center;
     font-size: large;
     font-weight: bold;
+    
 }
 
 .jalsah-desc {
     padding: 10px 0;
     font-size: larger;
     align-self: flex-end;
+    text-decoration: none;
 }
 
 .jalsah-info-container {
     display: flex;
     gap: 10px;
+    
 }
 
 .jalsah-info-icons {
@@ -238,4 +248,9 @@ textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: vertical;
+}
+
+.jalsah-container:hover {
+    box-shadow: 0 0 5px  #000000;
+    transition: 0.2s;
 }

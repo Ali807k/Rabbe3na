@@ -72,6 +72,12 @@
 
 }
 
+.jalsah-time{
+    font-weight: 600;
+    padding-left: 1rem;
+
+}
+
 .leave-btn{
     text-align: end;
     margin-top: 90px;
@@ -90,6 +96,7 @@
     border: 1px solid black;
     cursor: pointer;
     transition: all 0.3s;
+    margin-bottom: 20rem;
 }
 .leave:hover, .leave:active{
     background-color: #b03939;
