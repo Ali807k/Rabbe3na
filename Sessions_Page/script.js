@@ -40,6 +40,16 @@ privateButton.onclick = function() {
   privateButton.classList.add("active");
   publicButton.classList.remove("active");
   gameAccess = 'private';
+
+  
+}
+
+function formatDateTime(datetimeLocalStr) {
+  // Split the original datetime string
+  const [date, time] = datetimeLocalStr.split('T');
+
+  // Combine date and time with a custom separator
+  return `${date}| ${time}`;
 }
 
 document.getElementById("createButton").addEventListener("click", function(event) {
@@ -47,8 +57,9 @@ document.getElementById("createButton").addEventListener("click", function(event
 
   
   
-  const timeValue = document.getElementById("time") ? document.getElementById("time").value.trim() : '';
+  var timeValue = document.getElementById("time") ? document.getElementById("time").value.trim() : '';
   const descriptionValue = document.getElementById("description") ? document.getElementById("description").value.trim() : '';
+  timeValue = formatDateTime(timeValue);
 
   
   if ( timeValue === '' || descriptionValue === '') {
@@ -60,7 +71,9 @@ document.getElementById("createButton").addEventListener("click", function(event
       
       gameAccess: document.getElementsByClassName("access-button public")[0].classList.contains("active") ? "public" : "private",
       time: timeValue,
-      description: descriptionValue
+      description: descriptionValue,
+      id:""
+      
   };
 
   addJalsahToSessionList(jalsahData);
@@ -68,11 +81,19 @@ document.getElementById("createButton").addEventListener("click", function(event
   modal.style.display="none" // Hide the modal after adding the Jalsah
 });
 
+let nextId = 1;
+function createId() {
+  return nextId++;  // Return the current value of nextId, then increment it
+}
+
 
 function addJalsahToSessionList(jalsahData) {
+  const jalsahId = createId();  // Assign a unique ID to the session (later will be changed because right now we do not have a server)
+  jalsahData.id = jalsahId;
   const jalsahElement = document.createElement("div");
   jalsahElement.classList.add("jalsah");
   jalsahElement.innerHTML = `
+  <a href="/Jalsa_Page/Jalsa.html?id=${jalsahId}&desc=${encodeURIComponent(jalsahData.description)}&time=${encodeURIComponent(jalsahData.time)}" class="jalsah-link">
   <div class="jalsah-container">
   <div class="user-container">
     <span class="user-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
