@@ -239,10 +239,12 @@
     transition: 0.5s;
 }
 
-/* MEDIA QUERIES */
-
 @media screen and (max-width: 426px) {
-    .container {
+    .toggle-panel {
+        padding: 0 10px;
         font-size: xx-small;
+    }
+    .form-container {
+        font-size: smaller;
     }
 }

@@ -75,3 +75,31 @@
 	color: transparent; /* This makes the text color transparent, showing the background */
 	display: inline; /* Necessary to apply the gradient to just this span of text */
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        font-size: small;
+		top: 100px;
+    }
+
+	.title {
+		text-align: center;
+	}
+
+	.image-container {
+		width: 100%;
+	}
+
+	.start-button {
+		top: 40px;
+		font-size: small;
+	}
+}
+
+@media screen and (max-width: 426px) {
+	.main-container {
+		font-size: .5em;
+	}
+}
