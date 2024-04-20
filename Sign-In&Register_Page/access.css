@@ -238,3 +238,11 @@
     border: 1px solid #333;
     transition: 0.5s;
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 426px) {
+    .container {
+        font-size: xx-small;
+    }
+}

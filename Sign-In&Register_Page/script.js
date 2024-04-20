@@ -19,36 +19,20 @@ loginBtn.addEventListener('click', () => {//For the animation of the form
 
 form.addEventListener('submit', (e) => {
     let messages = [];
-
-    
-    
-
     if (password.value.length <= 6) {
         messages.push('Password must be longer than 6 characters');
         password.style.border = "1px solid red";
-        
     }
-
     else(password.style.border = "initial");
 
     if (password.value !== confirmPassword.value) {
         messages.push('Passwords do not match');
         confirmPassword.style.border = "1px solid red";
     }
-
     else(confirmPassword.style.border = "initial");
 
-    
-    
-
-    
     if(messages.length > 0){
         e.preventDefault()
         errorElement.innerText = messages.join(', ');
-        
     }
-
-    
-    
-
 });
