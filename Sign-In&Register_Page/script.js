@@ -44,7 +44,7 @@ form.addEventListener('submit', (e) => {
             password: password.value
         };
 
-        fetch('/api/users/register', {
+        fetch('http://localhost:3000/api/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ form.addEventListener('submit', (e) => {
             // Redirect or handle success
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.log('Error:', error);
         });
     }
 });

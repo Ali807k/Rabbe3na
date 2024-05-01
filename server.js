@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose'); // for mongoDB
+const cors = require('cors'); // for cross-origin requests
 
 const app = express();
+app.use(cors({
+  origin: 'http://127.0.0.1:5501'  // Allow your frontend's origin
+}));
 
-
+// Routes
 const userRoutes = require('./routes/users');
 
 // Middleware
