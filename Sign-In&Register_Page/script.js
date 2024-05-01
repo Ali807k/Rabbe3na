@@ -35,4 +35,29 @@ form.addEventListener('submit', (e) => {
         e.preventDefault()
         errorElement.innerText = messages.join(', ');
     }
+
+    else {
+        e.preventDefault(); // Prevent form from submitting the default way
+        const formData = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        };
+
+        fetch('/api/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            // Redirect or handle success
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
 });
