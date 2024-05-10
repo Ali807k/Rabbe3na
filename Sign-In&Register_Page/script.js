@@ -9,6 +9,13 @@ const errorElement=document.getElementById('error');
 const confirmPassword=document.getElementById('confirm-password');
 
 
+const loginEmail=document.getElementById('emailLogIn');
+const loginPassword=document.getElementById('passwordLogIn');
+const signinForm=document.getElementById('sign-in-form');
+
+
+
+
 registerBtn.addEventListener('click', () => { //For the animation of the form
     container.classList.add("active");
 });
@@ -55,9 +62,38 @@ form.addEventListener('submit', (e) => {
         .then(data => {
             console.log('Success:', data);
             // Redirect or handle success
+            window.location.href = 'http://localhost:3000/access.html';
         })
         .catch((error) => {
             console.log('Error:', error);
         });
     }
+});
+
+signinForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form from submitting the default way
+    const formData = {
+        email: loginEmail.value,
+        password: loginPassword.value
+    };
+
+    fetch('http://localhost:3000/api/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Redirect or handle success
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('username', data.username); 
+        window.location.href = 'http://localhost:3000/session.html';
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Invalid Email or Password');
+    });
 });
