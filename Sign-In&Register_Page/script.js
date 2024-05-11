@@ -1,7 +1,7 @@
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
-const userName=document.getElementById('username');
+const username=document.getElementById('username');
 const password=document.getElementById('password');
 const email=document.getElementById('email');
 const form=document.getElementById('sign-up-form');
@@ -77,23 +77,32 @@ signinForm.addEventListener('submit', (e) => {
         password: loginPassword.value
     };
 
+    console.log('Form Data:', formData); // Debugging
+
     fetch('http://localhost:3000/api/users/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        email: loginEmail.value,
+        password: loginPassword.value
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Redirect or handle success
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.username); 
-        window.location.href = 'http://localhost:3000/session.html';
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Invalid Email or Password');
-    });
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Failed to log in');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log('Login successful:', data);
+    localStorage.setItem('authToken', data.authToken); // Storing the token for future use
+    localStorage.setItem('username', data.username); // Storing the username if necessary for the client app
+     // Redirect to a secure page
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert('Invalid Email or Password');
+});
 });

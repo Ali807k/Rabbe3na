@@ -8,11 +8,12 @@ app.use(cors({
   origin: 'http://127.0.0.1:5501'  // Allow your frontend's origin
 }));
 
+app.use(express.json());
 // Routes
 const userRoutes = require('./routes/users');
 
 // Middleware
-app.use(express.json()); // for parsing application/json
+ // for parsing application/json
 app.use('/api/users', userRoutes); // Set the base path for all routes in users.js
 
 // MongoDB connection
