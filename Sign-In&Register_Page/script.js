@@ -100,6 +100,7 @@ signinForm.addEventListener('submit', (e) => {
     localStorage.setItem('authToken', data.authToken); // Storing the token for future use
     localStorage.setItem('username', data.username); // Storing the username if necessary for the client app
      // Redirect to a secure page
+     
 })
 .catch(error => {
     console.error('Error:', error);

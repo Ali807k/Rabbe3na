@@ -31,22 +31,26 @@ router.post('/register', async (req, res) => {
 // POST route for user login
 router.post('/login', async (req, res) => {
     try {
-        console
         const { email, password } = req.body;
         const user = await User.findOne({ email });
-        if (!user) return res.status(404).send('User not found');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' }); // Use .json() to send JSON response
+        }
 
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).send('Invalid credentials');
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid credentials' }); // Use .json() to send JSON response
+        }
 
         const token = jwt.sign(
             { _id: user._id, username: user.username }, // Include username in the token
             process.env.TOKEN_SECRET,
             { expiresIn: '1h' }
         );
-        res.header('auth-token', token).send(token);
+        res.json({ authToken: token, username: user.username }); // Send JSON response with token and username
+        
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({ error: error.toString() }); // Send error details in JSON format
     }
 });
 
