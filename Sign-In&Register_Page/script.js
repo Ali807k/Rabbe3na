@@ -62,7 +62,7 @@ form.addEventListener('submit', (e) => {
         .then(data => {
             console.log('Success:', data);
             // Redirect or handle success
-            window.location.href = 'http://localhost:3000/access.html';
+            window.location.href = '/Sign-In&Register_Page/access.html';
         })
         .catch((error) => {
             console.log('Error:', error);
@@ -100,6 +100,7 @@ signinForm.addEventListener('submit', (e) => {
     localStorage.setItem('authToken', data.authToken); // Storing the token for future use
     localStorage.setItem('username', data.username); // Storing the username if necessary for the client app
      // Redirect to a secure page
+     window.location.href = '/Home_Page/index.html';
      
 })
 .catch(error => {

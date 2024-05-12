@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose'); // for mongoDB
 const cors = require('cors'); // for cross-origin requests
-
+const path = require('path');
 const app = express();
 app.use(cors({
   origin: 'http://127.0.0.1:5501'  // Allow your frontend's origin
@@ -15,6 +15,8 @@ const userRoutes = require('./routes/users');
 // Middleware
  // for parsing application/json
 app.use('/api/users', userRoutes); // Set the base path for all routes in users.js
+app.use('/Home_Page', express.static(path.join(__dirname, 'Home_Page')));
+app.use('/Sign-In&Register_Page', express.static(path.join(__dirname, 'Sign-In&Register_Page')));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
