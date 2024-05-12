@@ -1,29 +1,40 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose'); // for mongoDB
-const cors = require('cors'); // for cross-origin requests
-const path = require('path');
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose"); // for mongoDB
+const cors = require("cors"); // for cross-origin requests
+const path = require("path");
 const app = express();
-app.use(cors({
-  origin: 'http://127.0.0.1:5501'  // Allow your frontend's origin
-}));
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5501", // Allow your frontend's origin
+  })
+);
 
 app.use(express.json());
 // Routes
-const userRoutes = require('./routes/users');
+const userRoutes = require("./routes/users");
 
 // Middleware
- // for parsing application/json
-app.use('/api/users', userRoutes); // Set the base path for all routes in users.js
-app.use('/Home_Page', express.static(path.join(__dirname, 'Home_Page')));
-app.use('/Sign-In&Register_Page', express.static(path.join(__dirname, 'Sign-In&Register_Page')));
+// for parsing application/json
+app.use("/api/users", userRoutes); // Set the base path for all routes in users.js
+app.use("/Home_Page", express.static(path.join(__dirname, "Home_Page")));
+app.use(
+  "/Sign-In&Register_Page",
+  express.static(path.join(__dirname, "Sign-In&Register_Page"))
+);
+const jalsahRouter = require("./routes/jalsah");
+app.use(
+  "/Sessions_Page",
+  express.static(path.join(__dirname, "Sessions_Page"))
+);
+app.use("/api/jalsah", jalsahRouter); // This should match the directory and file name correctly
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('Failed to connect to MongoDB:', err));
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-

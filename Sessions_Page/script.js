@@ -2,98 +2,117 @@
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("createJalsahButton"); 
+var btn = document.getElementById("createJalsahButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 updateJalsahListDisplay();
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
+// When the user clicks the button, open the modal
+btn.onclick = function () {
   modal.style.display = "block";
-}
+};
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
 var publicButton = document.getElementsByClassName("access-button public")[0];
 var privateButton = document.getElementsByClassName("access-button private")[0];
 
-let gameAccess = 'public'; // default access
+let gameAccess = "public"; // default access
 
-publicButton.onclick = function() {
+publicButton.onclick = function () {
   publicButton.classList.add("active");
   privateButton.classList.remove("active");
-  gameAccess = 'public';
-}
+  gameAccess = "public";
+};
 
-privateButton.onclick = function() {
+privateButton.onclick = function () {
   privateButton.classList.add("active");
   publicButton.classList.remove("active");
-  gameAccess = 'private';
-
-  
-}
+  gameAccess = "private";
+};
 
 function formatDateTime(datetimeLocalStr) {
   // Split the original datetime string
-  const [date, time] = datetimeLocalStr.split('T');
+  const [date, time] = datetimeLocalStr.split("T");
 
   // Combine date and time with a custom separator
   return `${date}| ${time}`;
 }
 
-document.getElementById("createButton").addEventListener("click", function(event) {
-  event.preventDefault(); // Stop the form from submitting normally
+document
+  .getElementById("createButton")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Stop the form from submitting normally
 
-  
-  
-  var timeValue = document.getElementById("time") ? document.getElementById("time").value.trim() : '';
-  const descriptionValue = document.getElementById("description") ? document.getElementById("description").value.trim() : '';
-  timeValue = formatDateTime(timeValue);
+    var timeValue = document.getElementById("time")
+      ? document.getElementById("time").value.trim()
+      : "";
+    const descriptionValue = document.getElementById("description")
+      ? document.getElementById("description").value.trim()
+      : "";
+    timeValue = formatDateTime(timeValue);
 
-  
-  if ( timeValue === '' || descriptionValue === '') {
-      alert('Please fill in all required fields.');
+    if (timeValue === "" || descriptionValue === "") {
+      alert("Please fill in all required fields.");
       return; // Stop the function if any field is empty
-  }
+    }
 
-  const jalsahData = {
-      
-      gameAccess: document.getElementsByClassName("access-button public")[0].classList.contains("active") ? "public" : "private",
+    const jalsahData = {
+      gameAccess: document
+        .getElementsByClassName("access-button public")[0]
+        .classList.contains("active")
+        ? "public"
+        : "private",
       time: timeValue,
+      location: document.getElementById("locationInput").value.trim(),
       description: descriptionValue,
-      id:""
-      
-  };
+      id: "",
+    };
+    fetch("http://localhost:3000/api/jalsah/createJalsah", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jalsahData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
-  addJalsahToSessionList(jalsahData);
-  updateJalsahListDisplay(); // Update the display
-  modal.style.display="none" // Hide the modal after adding the Jalsah
-});
+    addJalsahToSessionList(jalsahData);
+    updateJalsahListDisplay(); // Update the display
+    modal.style.display = "none"; // Hide the modal after adding the Jalsah
+  });
 
 let nextId = 1;
 function createId() {
-  return nextId++;  // Return the current value of nextId, then increment it
+  return nextId++; // Return the current value of nextId, then increment it
 }
 
-
 function addJalsahToSessionList(jalsahData) {
-  const jalsahId = createId();  // Assign a unique ID to the session (later will be changed because right now we do not have a server)
+  const jalsahId = createId(); // Assign a unique ID to the session (later will be changed because right now we do not have a server)
   jalsahData.id = jalsahId;
   const jalsahElement = document.createElement("div");
   jalsahElement.classList.add("jalsah");
   jalsahElement.innerHTML = `
-  <a href="/Jalsa_Page/Jalsa.html?id=${jalsahId}&desc=${encodeURIComponent(jalsahData.description)}&time=${encodeURIComponent(jalsahData.time)}" class="jalsah-link">
+  <a href="/Jalsa_Page/Jalsa.html?id=${jalsahId}&desc=${encodeURIComponent(
+    jalsahData.description
+  )}&time=${encodeURIComponent(jalsahData.time)}" class="jalsah-link">
   <div class="jalsah-container">
   <div class="user-container">
     <span class="user-icon"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,11 +166,11 @@ function updateJalsahListDisplay() {
   var jalsahList = document.getElementById("jalsahList");
 
   if (jalsahList.children.length === 0) {
-      jalsahList.innerHTML = "<h1>No sessions available</h1>";
+    jalsahList.innerHTML = "<h1>No sessions available</h1>";
   } else {
-      var h1Element = jalsahList.querySelector("h1");
-      if (h1Element) {
+    var h1Element = jalsahList.querySelector("h1");
+    if (h1Element) {
       h1Element.remove();
-      }
+    }
   }
 }
