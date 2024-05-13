@@ -1,3 +1,4 @@
+// FETCHING JALSAT
 async function getJalsaat() {
 	fetch("http://localhost:3000/api/jalsaat")
 	.then((response) => response.json())
@@ -67,7 +68,7 @@ function showJalsaat(jalsaat) {
 		jalsaatElement.appendChild(jalsahElement);
 	});
 }
-
+ 
 async function createJalsah(event) {
 	event.preventDefault(); // Stop the form from submitting
 	const user = sessionStorage.getItem("id");
