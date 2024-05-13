@@ -71,7 +71,7 @@ function showJalsaat(jalsaat) {
  
 async function createJalsah(event) {
 	event.preventDefault(); // Stop the form from submitting
-	const user = sessionStorage.getItem("id");
+	const user = sessionStorage.getItem("username");
 	const gameAccess = document.getElementsByClassName("access-button public")[0].classList.contains("active") ? "public" : "private";
 	const description = document.getElementById("description") ? document.getElementById("description").value.trim() : '';
 	const location =  document.getElementById("locationInput").value.trim();
@@ -91,7 +91,20 @@ async function createJalsah(event) {
 		time: time,
 		description: description,
 	};
-
+	fetch("http://localhost:3000/api/jalsaat/createJalsah", {
+		method: 'POST',
+		headers: {
+			"Content-Type": 'application/json'
+        },
+        body: JSON.stringify(jalsahData) 
+	})
+	.then((response) => response.json())
+	.then((data) => {
+		getJalsaat();
+	})
+	.catch((error) => {
+		console.log("Error:", error);
+	});
 	modal.style.display="none"; // Hide the modal after adding the Jalsah
 }
 

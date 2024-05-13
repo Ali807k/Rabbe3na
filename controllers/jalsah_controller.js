@@ -23,8 +23,8 @@ async function getJalsahById(req, res) {
 }
 
 async function createJalsah(req, res) {
-    const { user, gameAccess, time, location, description } = req.body;
     try {
+        const { user, gameAccess, time, location, description } = req.body;
         const newJalsah = new Jalsah({
             user,
             gameAccess,

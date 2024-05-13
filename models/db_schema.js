@@ -8,11 +8,12 @@ const userSchema = mongoose.Schema({
 })
 
 const jalsahSchema = mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    user: { type: String, require: true },
     gameAccess: { type: String, enum: ["public", "private"], required: true },
-    time: { type: Date, required: true },
+    time: { type: Object, required: true },
     location: { type: String, required: true },
     description: { type: String, required: true },
+    players: {type: Array, default: []}
 })
 
 const User = mongoose.model("User", userSchema);
