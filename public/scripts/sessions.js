@@ -1,23 +1,25 @@
 // FETCHING JALSAT
 async function getJalsaat() {
-	fetch("http://localhost:3000/api/jalsaat")
-	.then((response) => response.json())
+  fetch("http://localhost:3000/api/jalsaat")
+    .then((response) => response.json())
     .then((data) => showJalsaat(data))
-	.catch((error) => console.error("Error fetching jalsaat:", error));
+    .catch((error) => console.error("Error fetching jalsaat:", error));
 }
 
 function showJalsaat(jalsaat) {
-	const jalsaatElement = document.getElementById("jalsahList");
-	if (jalsaat.length == 0) {
-		jalsaatElement.innerHTML = "<h1>No sessions available</h1>";
-		return;
-	}
-	jalsaatElement.innerHTML = "";
-	jalsaat.forEach(jalsah => {
-		const jalsahElement = document.createElement("div");
-		jalsahElement.classList.add("jalsah");
-		jalsahElement.innerHTML = `
-				<a href="/jalsah?id=${jalsah._id}&desc=${encodeURIComponent(jalsah.description)}&time=${encodeURIComponent(jalsah.time)}" class="jalsah-link">
+  const jalsaatElement = document.getElementById("jalsahList");
+  if (jalsaat.length == 0) {
+    jalsaatElement.innerHTML = "<h1>No sessions available</h1>";
+    return;
+  }
+  jalsaatElement.innerHTML = "";
+  jalsaat.forEach((jalsah) => {
+    const jalsahElement = document.createElement("div");
+    jalsahElement.classList.add("jalsah");
+    jalsahElement.innerHTML = `
+				<a href="/jalsah?id=${jalsah._id}&desc=${encodeURIComponent(
+      jalsah.description
+    )}&time=${encodeURIComponent(jalsah.time)}" class="jalsah-link">
 				<div class="jalsah-container">
 					<div class="user-container">
 						<span class="user-icon">
@@ -29,7 +31,7 @@ function showJalsaat(jalsaat) {
 								30 5 30H25C26.3261 30 27.5979 29.4732 28.5355 28.5355C29.4732 27.5979 30 26.3261 30 25C30 22.7899 29.122 20.6702 27.5592 19.1074C25.9964 17.5446 23.8768 16.6667 21.6667 16.6667H8.33333Z" fill="#1F1F1F"/>
 							</svg>
 						</span>
-						<span class="username-jalsah">Guest</span>
+						<span class="username-jalsah">${jalsah.user}</span>
 					</div>
 					<span class="jalsah-desc">
 						${jalsah.description}
@@ -65,62 +67,72 @@ function showJalsaat(jalsaat) {
 					</div>
 				</div>
 		`;
-		jalsaatElement.appendChild(jalsahElement);
-	});
+    jalsaatElement.appendChild(jalsahElement);
+  });
 }
- 
+
 async function createJalsah(event) {
-	event.preventDefault(); // Stop the form from submitting
-	const user = sessionStorage.getItem("username");
-	const gameAccess = document.getElementsByClassName("access-button public")[0].classList.contains("active") ? "public" : "private";
-	const description = document.getElementById("description") ? document.getElementById("description").value.trim() : '';
-	const location =  document.getElementById("locationInput").value.trim();
+  event.preventDefault(); // Stop the form from submitting
+  const user = sessionStorage.getItem("username");
+  const gameAccess = document
+    .getElementsByClassName("access-button public")[0]
+    .classList.contains("active")
+    ? "public"
+    : "private";
+  const description = document.getElementById("description")
+    ? document.getElementById("description").value.trim()
+    : "";
+  const location = document.getElementById("locationInput").value.trim();
 
-	var time = document.getElementById("time") ? document.getElementById("time").value.trim() : '';
-	time = formatDateTime(time);
+  var time = document.getElementById("time")
+    ? document.getElementById("time").value.trim()
+    : "";
+  time = formatDateTime(time);
 
-	if ( time === '' || description === '') {
-		alert('Please fill in all required fields.');
-		return; // Stop the function if any field is empty
-	}
+  if (time === "" || description === "") {
+    alert("Please fill in all required fields.");
+    return; // Stop the function if any field is empty
+  }
 
-	const jalsahData = {
-		user: user,
-		gameAccess: gameAccess,
-		location: location,
-		time: time,
-		description: description,
-	};
-	fetch("http://localhost:3000/api/jalsaat/createJalsah", {
-		method: 'POST',
-		headers: {
-			"Content-Type": 'application/json'
-        },
-        body: JSON.stringify(jalsahData) 
-	})
-	.then((response) => response.json())
-	.then((data) => {
-		getJalsaat();
-	})
-	.catch((error) => {
-		console.log("Error:", error);
-	});
-	modal.style.display="none"; // Hide the modal after adding the Jalsah
+  const jalsahData = {
+    user: user,
+    gameAccess: gameAccess,
+    location: location,
+    time: time,
+    description: description,
+  };
+  fetch("http://localhost:3000/api/jalsaat/createJalsah", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(jalsahData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      getJalsaat();
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+  modal.style.display = "none"; // Hide the modal after adding the Jalsah
 }
 
 function formatDateTime(datetimeLocalStr) {
-	// Split the original datetime string
-	const [date, time] = datetimeLocalStr.split('T');
-	// Combine date and time with a custom separator
-	return `${date}| ${time}`;
+  // Split the original datetime string
+  const [date, time] = datetimeLocalStr.split("T");
+  // Combine date and time with a custom separator
+  return `${date}| ${time}`;
 }
 
 function addJalsahToSessionList(jalsahData) {
-	const jalsahId = createId();  
-	const jalsahElement = document.createElement("div");
-	jalsahElement.classList.add("jalsah");
-	jalsahElement.innerHTML = `
-				<a href="/jalsah?id=${jalsahId}&desc=${encodeURIComponent(jalsahData.description)}&time=${encodeURIComponent(jalsahData.time)}" class="jalsah-link">
+  const jalsahId = createId();
+  const jalsahElement = document.createElement("div");
+  jalsahElement.classList.add("jalsah");
+  jalsahElement.innerHTML = `
+				<a href="/jalsah?id=${jalsahId}&desc=${encodeURIComponent(
+    jalsahData.description
+  )}&time=${encodeURIComponent(jalsahData.time)}" class="jalsah-link">
 				<div class="jalsah-container">
 					<div class="user-container">
 						<span class="user-icon">
@@ -132,7 +144,7 @@ function addJalsahToSessionList(jalsahData) {
 								30 5 30H25C26.3261 30 27.5979 29.4732 28.5355 28.5355C29.4732 27.5979 30 26.3261 30 25C30 22.7899 29.122 20.6702 27.5592 19.1074C25.9964 17.5446 23.8768 16.6667 21.6667 16.6667H8.33333Z" fill="#1F1F1F"/>
 							</svg>
 						</span>
-						<span class="username-jalsah">Guest</span>
+						<span class="username-jalsah">${jalsahData.user}</span>
 					</div>
 					<span class="jalsah-desc">
 						${jalsahData.description}
@@ -168,24 +180,24 @@ function addJalsahToSessionList(jalsahData) {
 					</div>
 				</div>
 				`;
-	document.getElementById("jalsahList").appendChild(jalsahElement);
+  document.getElementById("jalsahList").appendChild(jalsahElement);
 }
 
 function updateJalsahListDisplay() {
-	var jalsahList = document.getElementById("jalsahList");
+  var jalsahList = document.getElementById("jalsahList");
 
-	if (jalsahList.children.length === 0) {
-		jalsahList.innerHTML = "<h1>No sessions available</h1>";
-	} else {
-		var h1Element = jalsahList.querySelector("h1");
-		if (h1Element) {
-			h1Element.remove();
-		}
-	}
+  if (jalsahList.children.length === 0) {
+    jalsahList.innerHTML = "<h1>No sessions available</h1>";
+  } else {
+    var h1Element = jalsahList.querySelector("h1");
+    if (h1Element) {
+      h1Element.remove();
+    }
+  }
 }
 
 // EVENT LISTENERS
-document.addEventListener("DOMContentLoaded", getJalsaat)
+document.addEventListener("DOMContentLoaded", getJalsaat);
 document.getElementById("createButton").addEventListener("click", createJalsah);
 
 // CLOSING FUNCTIONS
@@ -193,43 +205,57 @@ document.getElementById("createButton").addEventListener("click", createJalsah);
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 document.getElementById("createJalsahButton").addEventListener("click", () => {
-	if (!sessionStorage.getItem("username")) {
-		alert("You need to log in to create a jalsah!");
-		window.location.href = "/access";
-		return;
-	}
-	modal.style.display = "block";
-}); 
+  username = sessionStorage.getItem("username");
+  if (!username) {
+    alert("You need to log in to create a jalsah!");
+    window.location.href = "/access";
+    return;
+  }
+
+  fetch("http://localhost:3000/api/jalsaat")
+    .then((response) => response.json())
+    .then((data) => {
+      for (const jalsah of data) {
+        if (jalsah.user === username) {
+          alert("You have already created a Jalsah.");
+          location.reload();
+          return;
+        }
+      }
+    });
+
+  modal.style.display = "block";
+});
 
 // Get the button element that closes the modal
 // When the user clicks on <span> (x), close the modal
 document.getElementsByClassName("close")[0].addEventListener("click", () => {
-	modal.style.display = "none";
+  modal.style.display = "none";
 });
 
 // When the user clicks anywhere outside of the modal, close it
 window.addEventListener("click", (event) => {
-	if (event.target == modal) {
-		modal.style.display = "none";
-	}
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 });
 
 // PUBLIC/PRIVATE FUNCTIONS
 var publicButton = document.getElementsByClassName("access-button public")[0];
 var privateButton = document.getElementsByClassName("access-button private")[0];
 
-let gameAccess = 'public'; // default access
+let gameAccess = "public"; // default access
 
-publicButton.onclick = function() {
-	publicButton.classList.add("active");
-	privateButton.classList.remove("active");
-	gameAccess = 'public';
-}
+publicButton.onclick = function () {
+  publicButton.classList.add("active");
+  privateButton.classList.remove("active");
+  gameAccess = "public";
+};
 
-privateButton.onclick = function() {
-	privateButton.classList.add("active");
-	publicButton.classList.remove("active");
-	gameAccess = 'private';
-}
+privateButton.onclick = function () {
+  privateButton.classList.add("active");
+  publicButton.classList.remove("active");
+  gameAccess = "private";
+};
