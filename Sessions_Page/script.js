@@ -77,6 +77,7 @@ document
     }
 
     const jalsahData = {
+      user: sessionStorage.getItem("username"),
       gameAccess: document
         .getElementsByClassName("access-button public")[0]
         .classList.contains("active")
@@ -87,20 +88,13 @@ document
       description: descriptionValue,
       id: "",
     };
-    const jalsahData2 = {
-      user: sessionStorage.getItem("username"),
-      gameAccess: jalsahData.gameAccess,
-      time: jalsahData.time,
-      location: jalsahData.location,
-      description: jalsahData.description,
-      players: [],
-    };
+
     fetch("http://localhost:3000/api/jalsah/createJalsah", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(jalsahData2),
+      body: JSON.stringify(jalsahData),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -119,6 +113,17 @@ let nextId = 1;
 function createId() {
   return nextId++; // Return the current value of nextId, then increment it
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("http://localhost:3000/api/jalsah/getJalsahs")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((jalsah) => {
+        addJalsahToSessionList(jalsah);
+      });
+      updateJalsahListDisplay();
+    });
+});
 
 function addJalsahToSessionList(jalsahData) {
   const jalsahId = createId(); // Assign a unique ID to the session (later will be changed because right now we do not have a server)
@@ -139,7 +144,7 @@ function addJalsahToSessionList(jalsahData) {
         30 5 30H25C26.3261 30 27.5979 29.4732 28.5355 28.5355C29.4732 27.5979 30 26.3261 30 25C30 22.7899 29.122 20.6702 27.5592 19.1074C25.9964 17.5446 23.8768 16.6667 21.6667 16.6667H8.33333Z" fill="#1F1F1F"/>
       </svg>
       </span>
-    <span class="username-jalsah">Guest</span>
+    <span class="username-jalsah">${jalsahData.user}</span>
   </div>
   <span class="jalsah-desc">
   ${jalsahData.description}

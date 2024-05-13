@@ -20,4 +20,16 @@ router.post("/createJalsah", async (req, res) => {
       .json({ message: "Error creating Jalsah", error: error.message });
   }
 });
+
+router.get("/getJalsahs", async (req, res) => {
+  try {
+    const jalsahs = await Jalsah.find();
+    res.json(jalsahs);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error getting Jalsahs", error: error.message });
+  }
+});
+
 module.exports = router;
