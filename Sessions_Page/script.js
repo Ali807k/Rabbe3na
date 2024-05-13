@@ -63,6 +63,17 @@ document
       alert("You must be signed in to create a Jalsah.");
       return;
     }
+    //not working
+    // fetch("http://localhost:3000/api/jalsah/getJalsahs")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     data.forEach((jalsah) => {
+    //       if (jalsah.user === sessionStorage.getItem("username")) {
+    //         alert("You can't create more than one Jalsah at a time.");
+    //         return;
+    //       }
+    //     });
+    //});
     var timeValue = document.getElementById("time")
       ? document.getElementById("time").value.trim()
       : "";
@@ -88,7 +99,6 @@ document
       description: descriptionValue,
       id: "",
     };
-
     fetch("http://localhost:3000/api/jalsah/createJalsah", {
       method: "POST",
       headers: {
@@ -104,9 +114,10 @@ document
         console.error("Error:", error);
       });
 
-    addJalsahToSessionList(jalsahData);
+    location.reload();
+    modal.style.display = "none"; // Hide the modal after adding the Jalsah}
+
     updateJalsahListDisplay(); // Update the display
-    modal.style.display = "none"; // Hide the modal after adding the Jalsah
   });
 
 let nextId = 1;
