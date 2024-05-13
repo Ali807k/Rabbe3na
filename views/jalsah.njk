@@ -1,0 +1,97 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+    <link rel="stylesheet" href="./styles/jalsa-details.css">
+    <link rel="stylesheet" href="./styles/jalsa-chat.css">
+    <script type="module" defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script defer src="./scripts/jalsah.js"></script>
+    <title>'s Jalsah</title>
+{% endblock %}
+{% block main %}
+      <Section class="jalsa-details">
+        <div class="players">
+          <ul class="players-list">
+            <li class="player-attribute">
+              <ion-icon class="player-icon" name="person-outline"></ion-icon>
+              <span class="player-name player1">Guest (H)</span>
+            </li>
+            
+          </ul>
+        </div>
+    
+        <div class="jalsa-info">
+            <ul class="jalsa-info-list">
+              <li class="jalsa-serial">
+                <span>Jalsa Serial: <span id="jalsaSerial">3DP1SX</span></span>
+              </li>
+              <li class="host-phone">
+                <span>Host’s Phone Number: <span id="hostPhone">0551111222</span></span>
+              </li>
+              <li class="jalsa-description">
+                
+                <p id="description">رابع جلسة عاليسار حياكم</p>
+              </li>
+              <li class="jalsa-time">
+                <span> <span class="jalsah-time"></span></span>
+            </li>
+            </ul>
+            <div class="leave-btn">
+              <a href="/Sessions_Page/sessions.html" class="leave">Leave</a>          
+            </div>
+        </div>
+    
+        <div class="jalsa-location">
+            <img src="" alt="jalsa location">
+        </div>
+    </Section>
+
+    <section class="jalsa-chat">
+
+
+    <div class="person-selector">
+
+    </div>
+    <div class="chat-container">
+      <h2 class="chat-header">Chat Room:</h2>
+      <!-- <div class="line"></div> -->
+
+      <div class="chat-messages">
+        <div class="message blue-bg">
+          <div class="message-sender player1-massage">OMARJ12314 (H):</div>
+          <div class="message-text">يعيال كم باقيلكم؟</div>
+          <div class="message-timestamp">10:43 PM</div>
+        </div>
+
+
+
+        <div class="message gray-bg">
+          <div class="message-sender player2-massage">Ali_FBI12345:</div>
+          <div class="message-text">بوصل بعد ربع ساعة</div>
+          <div class="message-timestamp">10:44 PM</div>
+        </div>
+
+
+          <div class="message you-bg">
+            <div class="message-sender You-massage">You</div>
+            <div class="message-text">أنا باقيلي شوي الشارع طلع زحمة</div>
+            <div class="message-timestamp">10:55 PM</div>
+          </div>
+
+
+          <div class="message white-gray-bg">
+            <div class="message-sender player3-massage">xx_hj124:</div>
+            <div class="message-text">على ذي الزحمة يبغالها نتكي للفجر تعويض</div>
+            <div class="message-timestamp">11:02 PM</div>
+
+      </div>
+
+      <form class="chat-input-form">
+        <input type="text" class="chat-input" required placeholder="Type here, You..." />
+        <button type="button" class="button send-button">Send</button>
+      </form>
+    </div>
+    </div>
+
+      </section>   
+{% endblock %}

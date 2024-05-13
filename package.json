@@ -1,12 +1,12 @@
 {
   "name": "rabbe3na",
   "version": "1.0.0",
-  "description": "SWE363 PROJECT",
-  "main": "index.html",
+  "description": "backend of swe363 project",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
-  "keywords": [],
   "author": "Group 8",
   "license": "ISC",
   "dependencies": {
@@ -15,7 +15,9 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.3.2",
-    "nodemailer": "^6.9.13"
+    "mongoose": "^8.3.4",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0",
+    "nunjucks": "^3.2.4"
   }
 }

@@ -1,0 +1,153 @@
+.jalsah-container {
+  border-radius: 15px;
+  background-color: #FFF6E5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  
+}
+
+.jalsah-desc {
+  padding: 10px 0;
+  font-size: larger;
+  align-self: flex-end;
+  text-decoration: none;
+}
+
+.jalsah-info-container {
+  display: flex;
+  gap: 10px;
+  
+}
+
+.jalsah-info-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.jalsah-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 3px;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-right: auto;
+  margin-top: 5rem;
+  height: auto;
+}
+
+.profile-section {
+  margin: 10px;
+  padding: 20px;
+  background: #F8EACE;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: auto;
+  align-content: center;
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 30%;
+  object-fit: cover;
+  margin-right: 20px;
+  align-content: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h1, .username, .joined-date, .location, .contact {
+  margin: 5px;
+}
+
+.edit-profile-btn {
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #84C686;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.previous-jalsaat-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.previous-jalsaat-container {
+   
+  margin-top: 20px;
+  
+  
+  margin-left: 200px;
+  
+  display: flex;
+  flex-direction: column;
+  
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .profile-section, .previous-jalsaat-section {
+    width: 100%; /* Take the full width on smaller screens */
+    margin: 10px 0;
+  }
+
+  .previous-jalsaat-container {
+    margin-left: 0;
+    align-items: center; 
+  }
+
+  .jalsah-container {
+    width: 100%; /* Jalsah cards take full width */
+  }
+
+  .profile-picture {
+    width: 150px;
+    height: 150px; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .profile-info h1, .profile-info .username, .profile-info .joined-date, .profile-info .location, .profile-info .contact {
+    font-size: smaller; 
+  }
+
+  .edit-profile-btn {
+    font-size: smaller; 
+  }
+}

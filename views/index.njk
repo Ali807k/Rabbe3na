@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+    <link rel="stylesheet" href="./styles/home-page.css">
+    <script src="./scripts/imageChangingScript.js" defer></script>      
+    <title>Rabbe3na</title>  
+{% endblock %}
+
+{% block main %}
+    <div class="main-container">
+        <div class="title">
+            Complete someone else's<span class="spade">♠️</span><span class="gradient-text">Baloot</span><span class="club">♣️</span>game!
+        </div>
+        <div class="image-container">
+            <img src="assets/baloot-game-top.jpeg" alt="ppl-playing-baloot" class="background-image">
+        </div>
+        <a href="/sessions"><button class="start-button">START NOW</button></a>
+    </div>        
+{% endblock %}
