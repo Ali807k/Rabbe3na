@@ -49,12 +49,20 @@ function formatDateTime(datetimeLocalStr) {
   // Combine date and time with a custom separator
   return `${date}| ${time}`;
 }
+// Getting the username from localstorage
+document.addEventListener("DOMContentLoaded", function () {
+  let username = sessionStorage.getItem("username");
+});
 
 document
   .getElementById("createButton")
   .addEventListener("click", function (event) {
     event.preventDefault(); // Stop the form from submitting normally
-
+    if (!sessionStorage.getItem("username")) {
+      //making sure that the user is signed in to create a Jalsah
+      alert("You must be signed in to create a Jalsah.");
+      return;
+    }
     var timeValue = document.getElementById("time")
       ? document.getElementById("time").value.trim()
       : "";
@@ -79,12 +87,20 @@ document
       description: descriptionValue,
       id: "",
     };
+    const jalsahData2 = {
+      user: sessionStorage.getItem("username"),
+      gameAccess: jalsahData.gameAccess,
+      time: jalsahData.time,
+      location: jalsahData.location,
+      description: jalsahData.description,
+      players: [],
+    };
     fetch("http://localhost:3000/api/jalsah/createJalsah", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(jalsahData),
+      body: JSON.stringify(jalsahData2),
     })
       .then((response) => response.json())
       .then((data) => {
