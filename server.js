@@ -10,7 +10,7 @@ const chat_controller = require('./controllers/chat_controller');
 const userRouter = require('./routes/users');
 const jalsahRouter = require('./routes/jalsaat');
 const chatRouter = require('./routes/chats');
- 
+const emailRouter = require('./routes/email')
 
 const io = require('socket.io')(http);
 

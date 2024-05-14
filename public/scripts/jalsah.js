@@ -14,6 +14,7 @@ async function getJalsah() {
 
 
 function loadJalsahDetails() {
+    window.top.document.title = jalsah.user + "'s Jalsah";
     document.querySelector('#jalsaSerial').textContent = jalsah._id;
     document.querySelector('#description').textContent = jalsah.description;
     document.querySelector('#gameAccess').textContent = jalsah.gameAccess;
