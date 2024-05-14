@@ -1,3 +1,4 @@
+const { Mongoose } = require("mongoose");
 const mongoose = require("../config/db");
 
 const userSchema = mongoose.Schema({
@@ -17,7 +18,15 @@ const jalsahSchema = mongoose.Schema({
     players: {type: Array, default: []}
 })
 
+const chatSchema = mongoose.Schema({
+    jalsahId: { type: mongoose.Schema.ObjectId, ref: 'Jalsah'},
+    user: { type: String, require: true },
+    message: { type: String, require: true },
+    time : { type: Date, require: true, default: Date.now() }
+})
+
 const User = mongoose.model("User", userSchema);
 const Jalsah = mongoose.model("Jalsah", jalsahSchema);
+const Chat = mongoose.model("Chat", chatSchema)
 
-module.exports = { User, Jalsah };
+module.exports = { User, Jalsah, Chat };

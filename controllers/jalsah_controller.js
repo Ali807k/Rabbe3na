@@ -33,6 +33,7 @@ async function createJalsah(req, res) {
             shortLocation,
             description,
         });
+        newJalsah.players.push(user);
         await newJalsah.save();
         res.json({ message: "Jalsah created successfully" });
     } catch (error) {

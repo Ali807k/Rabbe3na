@@ -1,87 +1,62 @@
+.main-container {
+    position: relative;
+    top: 60px;
+    height: 100vh;
+    gap: 30px;
+    max-width: 1400px;
+    margin-top: 10px;
+    padding: 0 20px;
+}
 .jalsa-details{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    max-width: 1200px;
+    grid-template-columns: 1fr 2fr 1fr;
+    max-width: 1400px;
     background-color: #723032;
     border-radius: 50px;
-    margin-top: 5rem;
-
 }
 
 .players{
     display: flex;
+    align-items: center;
     padding: 1.6rem;
-    margin-right: 2rem;
 }
+
 .players-list{
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 20px;
 }
 .player-attribute{
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-.player-icon{
+    gap: 10px;
     color: #FFF6E5;
+}
+
+.player-icon{   
     height: 30px;
     width: 30px;
 }
-.player-name{
-    color:#FFF6E5 ;
-}
+
 .jalsa-info{
     background-color: #FFF6E5;
-    width: 27.5rem;
-    margin: 0.5rem 0.5rem;
     border-radius: 50px;
-    margin-right: 2rem;
-    margin-left: 2rem;
+    margin: 10px;
 }
 .jalsa-info-list{
     list-style: none;
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-.jalsa-serial{
-    align-self: center;
+    flex-direction: column;  
+    gap: 20px;
     font-weight: 600;
-    padding-top: 1rem;
-
-
-}
-.host-phone{
-    font-weight: 600;
-    padding-left: 1rem;
-
-
-}
-.jalsa-description{
-    max-width: 27.5rem;
-    font-weight: 600;
-    padding-left: 1rem;
-
-
-
-}
-
-.jalsah-time{
-    font-weight: 600;
-    padding-left: 1rem;
-
+    padding: 1.6rem;
 }
 
 .leave-btn{
-    text-align: end;
-    margin-top: 90px;
-    margin-right: 20px;
-
-
+    align-self: flex-end;
 }
+
 .leave{
     background-color: #DC4747;
     color: #fff;
@@ -89,84 +64,32 @@
     font-size: 1rem;
     font-weight: 600;
     padding: 0.5rem 1.5rem;
-    border-radius: 15px;
-    border: 1px solid black;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s;
-    margin-bottom: 20rem;
 }
 .leave:hover, .leave:active{
     background-color: #b03939;
-
-}
-.jalsa-location > img{
-    /* width: 440px;
-    height: 284px; */
-    width: 75%;
-    border-radius: 50px;
 }
 
 .jalsa-location{
-    width: 27.5rem;
-    margin-top: 0.5rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
-    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50px;
+    overflow: hidden;
+    margin: 10px;
 }
+
+.jalsa-location iframe {
+    height: 100%;
+}
+
 .vl {
     border-left: 1px solid #FFF6E5;
     height: 200px;
     margin-top: 2.5rem;
-  }
-
-
-
-
-
-
- @media (max-width: 1024px){
-    .jalsa-details{
-        grid-template-columns: 1fr 1fr ;
-    
-
-    
-    }
-    .jalsa-chat{
-        margin-top: 2rem;
-        margin-right: 6rem;
-    }
-    .jalsa-location{
-        margin-top: 30px;
-        margin-left: 15rem;
-        grid-column: 1/-1;
-    }
-    .leave-btn{
-        text-align: end;
-        margin-top: 80px;
-        margin-right: 20px;
-        margin-bottom: 25px;
-    
-    
-    }
-    .jalsa-location > img{
-      
-        width: 100%;
-        border-radius: 50px;
-    }
-    .line {
-        border-bottom: none;
-        margin-bottom: 2rem;
-        width: 10px;
-        
-    }
-     
-
-
-
-} 
+}
 
 
 @media (max-width: 430px){

@@ -16,7 +16,7 @@ function showJalsaat(jalsaat) {
   jalsaat.forEach((jalsah) => {
     const jalsahElement = document.createElement("div");
     jalsahElement.classList.add("jalsah");
-    jalsahElement.innerHTML = `
+    jalsahElement.innerHTML = ` 
 				<a href="/jalsah?id=${jalsah._id}&desc=${encodeURIComponent(
       jalsah.description
     )}&time=${encodeURIComponent(jalsah.time)}" class="jalsah-link">
