@@ -44,6 +44,7 @@ io.on('connection', (socket) => {
         console.log('A user disconnected');
     });
 });
+app.use('/api/email', emailRouter);
 
 // Define a single route handler for all pages
 app.get('/:page', (req, res) => {
@@ -54,7 +55,7 @@ app.get('/:page', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-   res.sendFile(`index.html`)
+   res.render(`index.njk`);
 });
   
 const PORT = 3000
