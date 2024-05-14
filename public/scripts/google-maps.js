@@ -14,6 +14,7 @@ function initMap() {
   });
 
   const input = document.getElementById('locationInput');
+  const shortInput = document.getElementById('shortAddress')
   const autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
 
@@ -44,22 +45,42 @@ function initMap() {
       reverseGeocode(latLng);
   });
 
-  function reverseGeocode(latLng) {
-      const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ 'location': latLng }, function(results, status) {
-          if (status === 'OK') {
-              if (results[0]) {
-                  updateInputField(results[0].formatted_address);
-              } else {
-                  updateInputField('No address found');
-              }
-          } else {
-              updateInputField('Geocoder failed due to: ' + status);
-          }
-      });
-  }
+  	function reverseGeocode(latLng) {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'latLng': latLng },
+	function (results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			if (results[0]) {
+				var address = "", city = "", street = "", country = "", formattedAddress = "";
+                for (var i = 0; i < results[0].address_components.length; i++) {
+            	    var addr = results[0].address_components[i];
+                    if (addr.types[0] == 'country')
+                        country = addr.long_name;
+                    else if (addr.types[0] == 'street_address')
+						street = street + addr.long_name;
+					else if (addr.types[0] == 'establishment')
+						street = street + addr.long_name;
+					else if (addr.types[0] == 'route')
+						street = street + addr.long_name;
+					else if (addr.types[0] == ['locality'])
+						city = addr.long_name;
+				}
+				if (street != "") {
+					address = street +", ";
+				}
+				address += city;
+				
+                if (results[0].formatted_address != null) {
+					formattedAddress = results[0].formatted_address;
+				}
+				updateInputField(formattedAddress, address);
+			}
+		}
+    });
+  	}
 
-  function updateInputField(address) {
+  function updateInputField(address, shortAddress) {
       input.value = address;
+	  shortInput.value = shortAddress;
   }
 }

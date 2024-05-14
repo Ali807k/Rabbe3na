@@ -12,6 +12,7 @@ const jalsahSchema = mongoose.Schema({
     gameAccess: { type: String, enum: ["public", "private"], required: true },
     time: { type: Object, required: true },
     location: { type: String, required: true },
+    shortLocation: { type: String, required: true },
     description: { type: String, required: true },
     players: {type: Array, default: []}
 })

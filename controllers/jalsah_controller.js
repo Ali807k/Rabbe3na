@@ -24,12 +24,13 @@ async function getJalsahById(req, res) {
 
 async function createJalsah(req, res) {
     try {
-        const { user, gameAccess, time, location, description } = req.body;
+        const { user, gameAccess, time, location, shortLocation, description } = req.body;
         const newJalsah = new Jalsah({
             user,
             gameAccess,
             time,
             location,
+            shortLocation,
             description,
         });
         await newJalsah.save();
