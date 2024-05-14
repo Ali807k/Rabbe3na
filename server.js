@@ -54,7 +54,7 @@ app.get('/:page', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-   res.render(`index.njk`);
+   res.sendFile(`index.html`)
 });
   
 const PORT = 3000
