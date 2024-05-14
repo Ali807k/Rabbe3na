@@ -6,6 +6,7 @@ const nunjucks = require('nunjucks')
 
 const userRouter = require('./routes/users');
 const jalsahRouter = require('./routes/jalsaat')
+const emailRouter= require('./routes/email')
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
  
 app.use('/api/users', userRouter);
 app.use('/api/jalsaat', jalsahRouter);
+app.use('/api/email', emailRouter);
 
 // Define a single route handler for all pages
 app.get('/:page', (req, res) => {
