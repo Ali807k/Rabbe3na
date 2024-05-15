@@ -170,28 +170,29 @@ function updateJalsahListDisplay() {
 
 function getUserJalsaat() {
 	const sidebar = document.querySelector(".sidebar");
+	sidebar.innerHTML = "<h1>Jalsatik:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>";
 	const user = sessionStorage.getItem("username");
 	if (!user) {
 		const noJalsaat = document.createElement("h2");
 		noJalsaat.style.fontWeight = "1"
 		noJalsaat.style.padding = "20px"
 		noJalsaat.textContent = "You have no jalsah"
-		sidebar.appendChild(noJalsaat)
+		sidebar.appendChild(noJalsaat);
+		return;
 	}
 	fetch("http://localhost:3000/api/jalsaat")
 	.then((response) => response.json())
 	.then((data) => {
+		data = data.filter(jalsah => jalsah.players.find(player => player === user));
 		if(data.length == 0) {
 			const noJalsaat = document.createElement("h2");
 			noJalsaat.style.fontWeight = "1"
 			noJalsaat.style.padding = "20px"
 			noJalsaat.textContent = "You have no jalsah"
 			sidebar.appendChild(noJalsaat);
-			return
+			return;
 		}
-		data
-		.filter(jalsah => jalsah.players.find(player => player === user))
-		.forEach(jalsah => {
+		data.forEach(jalsah => {
 			const jalsahElement = document.createElement("p")
 			jalsahElement.textContent = jalsah.user + "'s Jalsah";
 			jalsahElement.addEventListener("click", (e) => {
