@@ -45,9 +45,8 @@
                     <li class="jalsa-description">
                         <span>Description:<br></span><span id="description"></span>
                     </li>
-                    <div class="leave-btn">
-                        <a href="/sessions" class="leave">Leave</a>          
-                    </div>
+                    <button class="leave-btn">  
+                    </button>
                 </ul>
             </div>
             <div class="jalsa-location">
@@ -64,13 +63,14 @@
                 <h2 class="chat-header">Chat Room:</h2>
                 <div class="chat-messages">
                 </div>
-                <form class="chat-input-form">
+                <div class="chat-input-form">
                     <input type="text" class="chat-input" required placeholder="Type here, You..." />
                     <button type="button" class="button send-button">Send</button>
-                </form>
+                </div>
             </div>
         </section>
     </div> 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./scripts/jalsah.js"></script>
 {% endblock %}
