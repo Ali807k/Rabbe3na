@@ -1,13 +1,23 @@
-// Get references to the button and form
-const editProfileButton = document.getElementById("editProfileButton");
-const editProfileForm = document.getElementById("editProfileForm");
+let user = {}
 
-// Add event listener to the button
-editProfileButton.addEventListener("click", () => {
-  // Toggle the visibility of the form
-  if (editProfileForm.style.display === "none") {
-    editProfileForm.style.display = "block";
-  } else {
-    editProfileForm.style.display = "none";
-  }
-});
+
+function loadUserInformation() {
+	fetch("http://localhost:3000/api/users")
+	.then(response => response.json())
+	.then((data) => {
+		data.forEach(iUser => {
+			if (iUser.username === sessionStorage.getItem("username")) {
+				user = iUser;
+			}
+		});
+		fillUpInformation();
+	})
+	.catch(error => console.error(error))
+} 
+
+function fillUpInformation() {
+	document.querySelector(".username").textContent += user.username;
+	document.querySelector(".contact").textContent = user.email;
+}
+
+document.addEventListener("DOMContentLoaded", loadUserInformation)

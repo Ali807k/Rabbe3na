@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const {
+    getAllUsers,
     registerUser,
     logInUser
 } = require("../controllers/user_controller")
 
-router.get("/", async function(req, res) {
-    return res.json({message: "FUCK YOU"})
-});
+router.get("/", getAllUsers)
 
 router.post("/login", logInUser);
 

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   	if (sessionStorage.getItem("authToken") && username) {
     	document.getElementById("username_").textContent = username;
     	document.getElementById("log").textContent = "Log out";
+        document.getElementById("profile").style.display = "block";
   	}
 });
 
@@ -12,6 +13,7 @@ logoutBtn.addEventListener("click", () => {
         sessionStorage.clear();
         localStorage.clear();
         document.getElementById("log").textContent = "Login";
+        document.getElementById("profile").style.display = "none";
         document.getElementById("username_").textContent = "Guest";
         window.location.href = "/";
     }

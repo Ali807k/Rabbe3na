@@ -43,11 +43,14 @@ body{
 }
 
 .navbar-title a:hover{
-	text-shadow: 0 0 5px #000;
+	text-shadow: 0 0 32px #000;
+	transform: translateY(2px);
 	transition: 0.3s;
 }
 
-  
+#profile {
+	display: none;
+}
 
 .dropbtn {
 	background-color: #FFF6E5;

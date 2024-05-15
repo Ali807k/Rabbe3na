@@ -1,11 +1,10 @@
-const { Mongoose } = require("mongoose");
 const mongoose = require("../config/db");
 
 const userSchema = mongoose.Schema({
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    profilePicture: { type: String }
+    joined: { type: Date, default: Date.now() }
 })
 
 const jalsahSchema = mongoose.Schema({
